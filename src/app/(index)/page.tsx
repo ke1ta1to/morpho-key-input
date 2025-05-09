@@ -1,3 +1,10 @@
+import { Monitor } from "./_components/monitor";
+
 export default async function IndexPage() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <div>
+      <h1>Multilayer Radial Picker</h1>
+      <Monitor />
+    </div>
+  );
 }
