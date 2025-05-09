@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
-import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Multi-Layer Radial Picker",
