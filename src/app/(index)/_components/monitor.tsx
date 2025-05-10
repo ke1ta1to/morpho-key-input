@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { MultilayerRadialPicker } from "@/app/components/multilayer-radial-picker";
+import { MorphoKeyInput } from "@/app/components/morpho-key-input";
 
 export function Monitor() {
   const [str, setStr] = useState<string>("");
@@ -10,7 +10,7 @@ export function Monitor() {
   return (
     <div>
       <p>Input: {str}</p>
-      <MultilayerRadialPicker onChange={setStr} />
+      <MorphoKeyInput onChange={setStr} />
     </div>
   );
 }
