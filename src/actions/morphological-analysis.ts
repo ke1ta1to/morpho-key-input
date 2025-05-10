@@ -2,7 +2,7 @@
 
 import MeCab from "mecab-async";
 
-type MorphologicalAnalysisResult = Record<
+export type MorphologicalAnalysisResult = Record<
   string,
   {
     /**
