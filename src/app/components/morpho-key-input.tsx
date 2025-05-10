@@ -9,16 +9,16 @@ interface MorphoKeyInputProps {
 }
 
 const colors: Record<string, string> = {
-  その他: "bg-gray-300 hover:bg-gray-400",
-  フィラー: "bg-stone-300 hover:bg-stone-400",
-  感動詞: "bg-amber-300 hover:bg-amber-400",
-  記号: "bg-zinc-300 hover:bg-zinc-400",
+  名詞: "bg-blue-300 hover:bg-blue-400",
+  動詞: "bg-red-300 hover:bg-red-400",
   形容詞: "bg-green-300 hover:bg-green-400",
+  副詞: "bg-purple-300 hover:bg-purple-400",
   助詞: "bg-yellow-300 hover:bg-yellow-400",
   接続詞: "bg-orange-300 hover:bg-orange-400",
-  動詞: "bg-red-300 hover:bg-red-400",
-  副詞: "bg-purple-300 hover:bg-purple-400",
-  名詞: "bg-blue-300 hover:bg-blue-400",
+  感動詞: "bg-amber-300 hover:bg-amber-400",
+  フィラー: "bg-stone-300 hover:bg-stone-400",
+  記号: "bg-zinc-300 hover:bg-zinc-400",
+  その他: "bg-gray-300 hover:bg-gray-400",
 };
 
 export function MorphoKeyInput({ onChange, sourceStr }: MorphoKeyInputProps) {
@@ -132,7 +132,26 @@ export function MorphoKeyInput({ onChange, sourceStr }: MorphoKeyInputProps) {
       </div>
 
       <div className="mt-4">
-        <h3 className="font-semibold text-gray-700 mb-2">次の単語候補</h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="font-semibold text-gray-700">次の単語候補</h3>
+          <div className="flex flex-wrap gap-2 items-center">
+            <span className="text-sm font-medium text-gray-600">品詞:</span>
+            {Object.entries(colors).map(([pos, colorClass]) => (
+              <div
+                key={pos}
+                className="flex items-center text-xs text-gray-600"
+              >
+                <span
+                  className={`inline-block w-3 h-3 rounded-full mr-1 ${
+                    colorClass.split(" ")[0]
+                  }`}
+                ></span>
+                {pos}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {sortedWordsByWeight.length > 0 ? (
           <div className="flex flex-wrap gap-2">
             {sortedWordsByWeight.map((word, index) => (
@@ -157,25 +176,6 @@ export function MorphoKeyInput({ onChange, sourceStr }: MorphoKeyInputProps) {
             候補がありません。入力ソースを更新してください。
           </div>
         )}
-
-        <div className="mt-4 pt-3 border-t border-gray-200">
-          <div className="flex flex-wrap gap-2 items-center">
-            <span className="text-sm font-medium text-gray-600">品詞:</span>
-            {Object.entries(colors).map(([pos, colorClass]) => (
-              <div
-                key={pos}
-                className="flex items-center text-xs text-gray-600"
-              >
-                <span
-                  className={`inline-block w-3 h-3 rounded-full mr-1 ${
-                    colorClass.split(" ")[0]
-                  }`}
-                ></span>
-                {pos}
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );
