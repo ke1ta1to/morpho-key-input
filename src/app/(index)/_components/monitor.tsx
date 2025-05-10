@@ -17,6 +17,9 @@ export function Monitor() {
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
           <h3 className="font-semibold text-gray-700">入力ソーステキスト</h3>
+          <span className="text-sm text-gray-500">
+            文字数: {sourceStr.length}
+          </span>
         </div>
         <textarea
           value={sourceStr}
